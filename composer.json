@@ -1,0 +1,19 @@
+{
+  "name": "teor/mm",
+  "description": "test composer",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ruslan Stshasliviy",
+      "email": "extazzi2014@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "App\\": "app\\"
+    }
+  }
+}
