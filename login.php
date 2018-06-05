@@ -15,7 +15,7 @@ if (isset($_POST['aut_auth'])) {
     $mail = !empty($_POST['aut_mail']) ? htmlspecialchars($_POST['aut_mail']) : '';
     $users->authorization($lname, $mail);
 }
-if (!empty($_SESSION['user_session'])){
+if (isset($_SESSION['user_session'])){
     header('Location: http://localhost/oop/');
 }
 ?>
