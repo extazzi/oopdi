@@ -1,0 +1,28 @@
+.left-content{
+    display: flex;
+    justify-content: flex-end
+}
+.right-content{
+    background-color: #d55152;
+    height:85%;
+    background-image: linear-gradient(to bottom right, transparent 47%, #fff, transparent 52%);
+    background-repeat: no-repeat;
+}
+.reg{
+    height: 50%;
+    width: 50%;
+    align-items: center;
+    margin: 0 5%;
+}
+
+.auth{
+    height: 50%;
+    width: 50%;
+    align-items: center;
+    margin: 0 35%;
+}
+
+p {
+    font-size: 54px;
+    color: #ffffff;
+}
