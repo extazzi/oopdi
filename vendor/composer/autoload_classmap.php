@@ -6,4 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\DBInterface\\IConnection' => $baseDir . '/app/DBInterface/IConnection.php',
+    'App\\DBInterface\\IUsers' => $baseDir . '/app/DBInterface/IUsers..php',
+    'App\\DBSystem\\RegisteryUsers' => $baseDir . '/app/DBSystem/RegisteryUsers.php',
+    'App\\DBSystem\\Users' => $baseDir . '/app/DBSystem/Users.php',
+    'App\\DB\\DBConfiguration' => $baseDir . '/app/DB/DBConfiguration.php',
+    'App\\DB\\DBConnection' => $baseDir . '/app/DB/DBConnection.php',
+    'App\\traits\\Connect' => $baseDir . '/app/Traits/Connect.php',
+    'App\\traits\\TUsers' => $baseDir . '/app/Traits/TUsers.php',
 );

@@ -20,11 +20,23 @@ class ComposerStaticInitd5e538c20b7fc4a8fc54675cf944371c
         ),
     );
 
+    public static $classMap = array (
+        'App\\DBInterface\\IConnection' => __DIR__ . '/../..' . '/app/DBInterface/IConnection.php',
+        'App\\DBInterface\\IUsers' => __DIR__ . '/../..' . '/app/DBInterface/IUsers..php',
+        'App\\DBSystem\\RegisteryUsers' => __DIR__ . '/../..' . '/app/DBSystem/RegisteryUsers.php',
+        'App\\DBSystem\\Users' => __DIR__ . '/../..' . '/app/DBSystem/Users.php',
+        'App\\DB\\DBConfiguration' => __DIR__ . '/../..' . '/app/DB/DBConfiguration.php',
+        'App\\DB\\DBConnection' => __DIR__ . '/../..' . '/app/DB/DBConnection.php',
+        'App\\traits\\Connect' => __DIR__ . '/../..' . '/app/Traits/Connect.php',
+        'App\\traits\\TUsers' => __DIR__ . '/../..' . '/app/Traits/TUsers.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitd5e538c20b7fc4a8fc54675cf944371c::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitd5e538c20b7fc4a8fc54675cf944371c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd5e538c20b7fc4a8fc54675cf944371c::$classMap;
 
         }, null, ClassLoader::class);
     }

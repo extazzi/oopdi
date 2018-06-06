@@ -2,15 +2,18 @@
 
 namespace App\traits;
 
-use App\DB\DBConnection;
-use App\DB\DBConfiguration;
-
-trait Connect
+trait TUsers
 {
-    public $conf;
-    public $db;
-    public function setParams(){
-        $this->conf = new DBConfiguration('root','','oop','localhost');
-        $this->db = new DBConnection($this->conf);
+    public function getAllNameUsers($gender = NULL)
+    {
+        if (empty($gender)) {
+            $users = $this->db->conn->query('SELECT * FROM users');
+        } else {
+            $users = $this->db->conn->query('SELECT * FROM users WHERE gender = ' . $gender);
+        }
+        while ($row = $users->fetch()) {
+            $ar[] = $row['fname'] . ' ' . $row['lname'];
+        }
+        return $ar;
     }
 }

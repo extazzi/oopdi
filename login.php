@@ -17,7 +17,7 @@ if (isset($_POST['aut_auth'])) {
     $users->authorization($lname, $mail);
 }
 if (isset($_SESSION['user_session'])) {
-    header('Location: http://localhost/oop/');
+    header('Location: http://localhost/oopdi/');
 }
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"

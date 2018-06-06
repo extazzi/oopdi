@@ -2,7 +2,8 @@
 
 namespace App\DBInterface;
 
-interface IConnection
+interface IUsers
 {
-    public function setParams();
+    public function showDataUserForBrouser();
+    public function getAllNameUsers($gender);
 }

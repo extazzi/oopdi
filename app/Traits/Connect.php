@@ -1,6 +1,7 @@
 <?php
 
 namespace App\traits;
+
 use App\DB\DBConnection;
 use App\DB\DBConfiguration;
 

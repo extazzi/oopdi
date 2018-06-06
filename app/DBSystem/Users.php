@@ -1,26 +1,46 @@
 <?php
+
 namespace App\DBSystem;
+
 use App\DBInterface\IConnection;
 use App\traits\Connect;
+use App\traits\TUsers;
+use App\DBInterface\IUsers;
 
-class Users implements IConnection
+class Users implements IConnection, IUsers
 {
+    private $users;
+
     use Connect;
-    //public function __construct(DBConfiguration $cnf)
-    //$this->conf= $cnf;
+    use TUsers;
 
     public function __construct()
     {
         $this->setParams();
     }
 
-    public function getAllNameUsers()
+    public function showDataUserForBrouser()
     {
-        $users = $this->db->conn->query('SELECT * FROM users');
-        while ($row = $users->fetch()) {
-            $ar[] = $row['fname'].' '.$row['lname'];
-        }
-        return $ar;
+        $user = $this->users;
+        return $user;
     }
 
+    public function getGender($id)
+    {
+        $stmt = $this->db->conn->prepare("SELECT `gender` FROM users WHERE id_user = :id_user");
+        $stmt->execute(array(':id_user' => $id));
+        $rez = $stmt->fetch();
+        return $rez['gender'];
+    }
+
+    public function getCustomerFnameByGender($gender){
+        $stmt = $this->db->conn->prepare("SELECT * FROM users WHERE gender = :gender");
+        $stmt->execute(array(':gender' => $gender));
+        $rez = $stmt->fetchAll();
+        $fname = array();
+        foreach ($rez as $name){
+            $fname[] = $name['fname'];
+        }
+        return $fname;
+    }
 }

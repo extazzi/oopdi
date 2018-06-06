@@ -5,11 +5,25 @@ session_start();
 if (isset($_POST['user_exit'])) {
     $users->logout();
 }
-if (!isset($_SESSION['user_session'])){
-    header('Location: http://localhost/oop/login.php');
-}
-
-?>
+//if (!isset($_SESSION['user_session'])){
+//    header('Location: http://localhost/oopdi/login.php');
+//}
+$name = new App\DBSystem\Users();
+if (isset($_SESSION['user_session'])) {
+    ?>
+    <table class="table table-bordered">
+        <tbody>
+        <td>Номер</td>
+        <td>Имя</td>
+        </tbody>
+        <?php foreach ($name->getCustomerFnameByGender($name->getGender($_SESSION['user_session'])) as $key => $name) {?>
+        <tr>
+            <td><?=$key?></td>
+            <td><?php echo $name;?></td>
+        </tr>
+        <?php } ?>
+    </table>
+<?php } ?>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
       integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -26,5 +40,5 @@ if (!isset($_SESSION['user_session'])){
 <script src="js/common.js"></script>
 
 <form method="post">
-    <input type="submit" name="user_exit" value="Выйти"  class="btn btn-primary">
+    <input type="submit" name="user_exit" value="Выйти" class="btn btn-primary">
 </form>
