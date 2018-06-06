@@ -1,4 +1,16 @@
 <?php
+require __DIR__ . "/vendor/autoload.php";
+$users = new App\DBSystem\RegisteryUsers();
+//var_dump($users instanceof \App\DBInterface\IConnection);
+session_start();
+if (isset($_POST['reg_registery'])) {
+    $fname = !empty($_POST['reg_fname']) ? htmlspecialchars($_POST['reg_fname']) : '';
+    $lname = !empty($_POST['reg_lname']) ? htmlspecialchars($_POST['reg_lname']) : '';
+    $mail = !empty($_POST['reg_mail']) ? htmlspecialchars($_POST['reg_mail']) : '';
+    $gender = !empty($_POST['reg_gender']) ? $_POST['reg_gender'] : 0;
+    $users->registery($fname, $lname, $mail, $gender);
+}
+
 if (isset($_POST['aut_auth'])) {
     $lname = !empty($_POST['aut_lname']) ? htmlspecialchars($_POST['aut_lname']) : '';
     $mail = !empty($_POST['aut_mail']) ? htmlspecialchars($_POST['aut_mail']) : '';
@@ -93,6 +105,17 @@ if (isset($_SESSION['user_session'])) {
                     </div>
                 </div>
             </form>
+        </div>
+
+        <div class="col-lg-6 right-content">
+            <div class="content reg" data-class="registery"
+                 style="display: flex; flex-basis: 50%; align-items: center; justify-content: center">
+                <a href=""><p>Регистрация</p></a>
+            </div>
+            <div class="content auth" data-class="authorization"
+                 style="display: flex; flex-basis: 50%; align-items: center; justify-content:  flex-end">
+                <a href=""><p>Авторизация</p></a>
+            </div>
         </div>
     </div>
 </div>
